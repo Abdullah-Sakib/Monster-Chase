@@ -12,7 +12,8 @@ public class Player1 : MonoBehaviour
     private float jumpForce = 11f;
 
     private string WALK_ANIMATION = "Walk";
-    private string GROUND_TAGS = "Ground";
+    private string GROUND_TAG = "Ground";
+    private string ENEMY_TAG = "Enemy";
 
     private bool isGrounded = true;
 
@@ -68,6 +69,7 @@ public class Player1 : MonoBehaviour
         }
     }
 
+
     void PlayerJump()
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -79,9 +81,19 @@ public class Player1 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(GROUND_TAGS))
-        {
+        if (collision.gameObject.CompareTag(GROUND_TAG))
             isGrounded = true;
-        }
+
+
+        if (collision.gameObject.CompareTag(ENEMY_TAG))
+            Destroy(gameObject);
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(ENEMY_TAG))
+            Destroy(gameObject);
+
     }
 }

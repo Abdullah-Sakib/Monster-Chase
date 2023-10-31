@@ -36,13 +36,13 @@ public class MonsterSpawner : MonoBehaviour
             {
                 // left side
                 spawnedMonster.transform.position = LeftPos.transform.position;
-                spawnedMonster.GetComponent<Monster>().speed = Random.Range(4, 10);
+                spawnedMonster.GetComponent<Monster>().speed = Random.Range(2, 5);
             }
             else
             {
                 // right side
                 spawnedMonster.transform.position = RightPos.transform.position;
-                spawnedMonster.GetComponent<Monster>().speed = -Random.Range(4, 7);
+                spawnedMonster.GetComponent<Monster>().speed = -Random.Range(2, 5);
                 spawnedMonster.transform.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
